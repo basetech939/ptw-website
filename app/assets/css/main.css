@@ -4,7 +4,38 @@
 @custom-variant dark (&:is(.dark *));
 @plugin 'tailwind-scrollbar';
 
+/* Brand fonts: Russo One is the logo's own typeface, Raleway the tagline's */
+@font-face {
+  font-family: "Russo One";
+  src: url("../fonts/RussoOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raleway";
+  src: url("../fonts/Raleway-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 @theme inline {
+  --font-display: "Russo One", system-ui, sans-serif;
+  --font-sans: "Raleway", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Paint The World palette (sampled from the logo) */
+  --color-navy: #02202F;
+  --color-navy-2: #0B3346;
+  --color-brush: #15678C;
+  --color-brush-2: #1E7FAA;
+  --color-leaf: #9DE9A1;
+  --color-leaf-2: #6FCF7A;
+  --color-mist: #EEF4F8;
+  --color-cloud: #DCE6EC;
+  --color-slate: #637984;
+  --color-cream: #FBF6EF;
+  --color-sun: #FFC857;
+  --color-brick: #E4572E;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -27,95 +58,108 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --radius: 0.9rem;
+  --background: #FBF6EF;
+  --foreground: #02202F;
+  --card: #FFFFFF;
+  --card-foreground: #02202F;
+  --popover: #FFFFFF;
+  --popover-foreground: #02202F;
+  --primary: #02202F;
+  --primary-foreground: #FFFFFF;
+  --secondary: #EEF4F8;
+  --secondary-foreground: #02202F;
+  --muted: #EEF4F8;
+  --muted-foreground: #4E6470;
+  --accent: #9DE9A1;
+  --accent-foreground: #02202F;
+  --destructive: #C2410C;
+  --border: #DCE6EC;
+  --input: #C9D6DE;
+  --ring: #15678C;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    overflow-x: clip;
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+  ::selection {
+    background: var(--color-leaf);
+    color: var(--color-navy);
+  }
+}
+
+/* Pre-hidden until GSAP reveals them (see head script in nuxt.config) */
+html.js-anim [data-reveal="fade"],
+html.js-anim [data-reveal="stagger"] > * { opacity: 0; transform: translateY(46px); }
+html.js-anim .pre-hide { opacity: 0; }
+html.js-anim .pre-clip-up { clip-path: inset(100% 0 0 0 round 2rem); }
+html.js-anim .pre-clip-down { clip-path: inset(0 0 100% 0 round 2rem); }
+html.js-anim .pre-scale { transform: scale(0); }
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+@utility container-x {
+  @apply relative z-[1] mx-auto w-full max-w-[1360px] px-5 sm:px-8 lg:px-12 2xl:px-16;
+}
+@utility eyebrow {
+  @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.28em] text-brush;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold uppercase tracking-[0.14em] transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-4;
+}
+@utility btn-paint {
+  @apply btn bg-leaf text-navy hover:bg-leaf-2 hover:-translate-y-0.5 shadow-[0_10px_30px_-10px_rgba(111,207,122,0.8)];
+}
+@utility btn-navy {
+  @apply btn bg-navy text-white hover:bg-brush hover:-translate-y-0.5;
+}
+@utility btn-ghost {
+  @apply btn border-2 border-current hover:-translate-y-0.5;
+}
+
+/* Painted underline used on key words */
+.paint-word {
+  position: relative;
+  white-space: nowrap;
+  z-index: 0;
+}
+.paint-word::after {
+  content: "";
+  position: absolute;
+  left: -0.12em;
+  right: -0.12em;
+  bottom: 0.04em;
+  height: 0.42em;
+  z-index: -1;
+  background: var(--paint, var(--color-leaf));
+  border-radius: 0.3em 0.6em 0.4em 0.7em;
+  transform: scaleX(var(--p, 1)) rotate(-1.2deg);
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
